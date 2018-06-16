@@ -3,16 +3,13 @@ from sklearn.datasets import load_iris
 import numpy as np
 from sklearn import tree
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
 
 # Importing the iris datasets
 dataset = load_iris()
 
 # train test split
-tdx = [0,15,30,45,60,75,90,105,120,135]
-data_train = np.delete(dataset.data, tdx, axis = 0)
-target_train = np.delete(dataset.target, tdx, axis = 0)
-data_test = dataset.data[tdx]
-target_test = dataset.target[tdx]
+data_train, data_test, target_train, target_test = train_test_split(dataset.data, dataset.target, test_size = 0.2)
 
 # Training the classifier
 clf = tree.DecisionTreeClassifier()
